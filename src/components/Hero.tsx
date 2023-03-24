@@ -1,25 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Button,
-  Popover,
+  ClickAwayListener,
+  Tooltip,
   Typography,
 } from '@mui/material';
+import { Info as InfoIcon } from '@mui/icons-material';
 
 import css from './Hero.module.scss';
 
 export default function Hero() {
-  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
+  const [tooltip, setTooltip] = React.useState(false);
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
+  const handleTooltipClose = () => {
+    setTooltip(false);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
+  const toggleTooltip = () => {
+    setTooltip(!tooltip);
   };
-
-  const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
 
   return (
     <div
@@ -28,38 +27,35 @@ export default function Hero() {
     >
       <Typography className="z-[1] font-extrabold tracking-tighter text-white" component="h1" variant="h2">Soirées</Typography>
       <Typography className="z-[1] font-bold text-gray-300" component="p">We capture the fun and protect your privacy.</Typography>
-      <Button
-        className="md:absolute max-md:top-[5%] max-md:right-auto max-md:bottom-auto max-md:left-auto md:top-[35%] md:right-[5%] md:bottom-[auto] md:left-[auto] z-[1] p-0 w-6 h-6 border-2 border-solid border-black border-opacity-50 rounded-full min-w-0 bg-white text-black font-bold lowercase"
-        onClick={handleClick}
-      >
-        i
-      </Button>
-      <Popover
-        id={id}
-        className="mt-2"
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'center',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'center',
-        }}
-        marginThreshold={50}
-      >
-        <div className="flex items-center gap-2 p-4">
-          <div className="w-12 h-12">
-            <img className="rounded-full w-full h-full" src="https://fastly.picsum.photos/id/980/48/48.webp?hmac=eoWJWp4-Jw7t9fCUXaB3lOx0nioRdbxfh6K4GgfLl-o" alt="" />
-          </div>
-          <div>
-            <Typography className="text-gray-400 text-[14px] font-bold">Shot by</Typography>
-            <Typography className="text-[14px]">Jamie Morris</Typography>
-          </div>
-        </div>
-      </Popover>
+      <ClickAwayListener onClickAway={handleTooltipClose}>
+        <Tooltip
+          className="z-[1]"
+          placement="bottom"
+          PopperProps={{
+            disablePortal: true,
+          }}
+          arrow
+          open={tooltip}
+          title={
+            <div className="flex items-center gap-2 p-2">
+              <div className="w-12 h-12">
+                <img className="rounded-full w-full h-full" src="https://fastly.picsum.photos/id/980/48/48.webp?hmac=eoWJWp4-Jw7t9fCUXaB3lOx0nioRdbxfh6K4GgfLl-o" alt="" />
+              </div>
+              <div>
+                <Typography className="text-gray-400 text-[14px] font-bold">Shot by</Typography>
+                <Typography className="text-[14px]">Jamie Morris</Typography>
+              </div>
+            </div>
+          }
+        >
+          <Button
+            className="md:absolute max-md:top-[5%] max-md:right-auto max-md:bottom-auto max-md:left-auto md:top-[35%] md:right-[5%] md:bottom-[auto] md:left-[auto] z-[1] p-0 border-2 border-solid w-6 h-6 border-white border-opacity-50 rounded-full min-w-0 bg-black text-white"
+            onClick={toggleTooltip}
+          >
+            <InfoIcon className="w-6 h-6" />
+          </Button>
+        </Tooltip>
+      </ClickAwayListener>
     </div>
   );
 };
