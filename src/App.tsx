@@ -44,9 +44,6 @@ const getDesignTokens = (mode: PaletteMode) => ({
     primary: {
       main: '#3c69f6'
     },
-    typography: {
-      fontFamily: '"Merriweather Sans", sans-serif',
-    },
     ...(mode === 'dark'
       ? {
           background: {
@@ -58,6 +55,9 @@ const getDesignTokens = (mode: PaletteMode) => ({
         }
       : {
         }),
+  },
+  typography: {
+    fontFamily: '"Merriweather Sans", sans-serif',
   },
 });
 
