@@ -5,7 +5,7 @@ import {
   Typography,
 } from '@mui/material';
 
-import css from './Hero.module.css';
+import css from './Hero.module.scss';
 
 export default function Hero() {
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
@@ -23,7 +23,7 @@ export default function Hero() {
 
   return (
     <div
-      className={`${css.Hero} relative h-[70vh] bg-no-repeat bg-cover bg-center flex justify-center items-center flex-col`}
+      className={`${css.Hero} relative h-[70vh] bg-no-repeat bg-cover bg-center flex justify-center items-center flex-col after:content-[''] after:absolute after:top-0 after:right-0 after:bottom-0 after:left-0 after:z-0`}
       style={{backgroundImage: 'url(https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format,compress&w=1200&h-600&q=60)'}}
     >
       <Typography className="z-[1] font-extrabold tracking-tighter text-white" component="h1" variant="h2">Soirées</Typography>

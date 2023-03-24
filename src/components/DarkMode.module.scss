@@ -1,0 +1,35 @@
+.ThemeToggle {
+  &::before,
+  &::after {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+  }
+
+  &::before {
+    margin-right: .75rem;
+    background-color: white;
+  }
+
+  &::after {
+    background-color: black;
+  }
+
+  span {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    transition: left .15s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: rgb(55 65 81);
+
+    &.ThemeToggleDark {
+      top: 3px;
+      left: calc(100% - 29px);
+    }
+  }
+}

@@ -19,6 +19,7 @@
     "react": "latest",
     "react-dom": "latest",
     "react-scripts": "latest",
+    "sass": "latest",
     "tailwindcss": "latest",
     "typescript": "latest",
     "web-vitals": "latest"

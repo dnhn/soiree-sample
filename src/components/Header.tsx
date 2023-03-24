@@ -6,7 +6,7 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
-import css from './Header.module.css';
+import css from './Header.module.scss';
 
 import Logo from './Logo';
 import DarkMode from './DarkMode';
@@ -34,15 +34,16 @@ export default function Header({ toggleColorMode }: { toggleColorMode: any }) {
         anchor="right"
         open={menu}
         onClose={() => setMenu(!menu)}
+        container={document.getElementById('root')}
       >
-        <div className={css.Drawer}>
+        <div className="flex flex-col justify-between h-full pt-8 px-4 pb-4">
           <div>
-            <Button className={css.Drawer_Button} variant="contained" href="#">I’m a photographer</Button>
-            <Button className={css.Drawer_Button} variant="contained" href="#">I’m a partner</Button>
+            <Button className="block rounded-lg font-bold normal-case bg-white text-black" variant="contained" href="#">I’m a photographer</Button>
+            <Button className="mt-4 block rounded-lg font-bold normal-case bg-white text-black" variant="contained" href="#">I’m a partner</Button>
           </div>
           <div>
             <DarkMode toggleColorMode={toggleColorMode} />
-            <Button className={css.Drawer_Language} variant="text">🇬🇧</Button>
+            <Button className="ml-16 min-w-0 px-0 text-[24px]" variant="text">🇬🇧</Button>
           </div>
         </div>
       </Drawer>

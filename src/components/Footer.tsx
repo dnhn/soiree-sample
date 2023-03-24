@@ -12,7 +12,7 @@ import {
   LinkedIn as LinkedInIcon,
 } from '@mui/icons-material';
 
-import css from './Footer.module.css';
+import css from './Footer.module.scss';
 import Logo from './Logo';
 
 export default function Footer() {

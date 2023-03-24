@@ -1,0 +1,5 @@
+.Hero {
+  &::after {
+    background-image: linear-gradient(to bottom, transparent 0%, transparent 25%, #171c23 100%);
+  }
+}

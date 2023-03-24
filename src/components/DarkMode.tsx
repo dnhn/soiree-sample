@@ -5,7 +5,7 @@ import {
   useTheme,
 } from '@mui/material';
 
-import css from './DarkMode.module.css';
+import css from './DarkMode.module.scss';
 
 export default function DarkMode(
   { className, toggleColorMode }:
@@ -14,15 +14,15 @@ export default function DarkMode(
   const theme = useTheme();
   return (
     <FormControlLabel
-      className={`${css.Label} ${className}`}
+      className={`m-0 ${className}`}
       control={
         <Checkbox
-          className={css.Checkbox}
+          className="hidden"
           checked={theme.palette.mode === 'dark' ? true : false}
           onChange={toggleColorMode}
         />}
       label={
-        <div className={`${css.ThemeToggle}`}>
+        <div className={`${css.ThemeToggle} relative rounded-2xl h-[32px] p-2 bg-[#3c69f6] text-[0px]`}>
           <span className={`${theme.palette.mode === 'dark' ? css.ThemeToggleDark : ''}`}></span>
         </div>
       }
