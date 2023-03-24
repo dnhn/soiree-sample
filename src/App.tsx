@@ -1,10 +1,4 @@
-import React, {
-  Fragment,
-  createContext,
-  useContext,
-  useMemo,
-  useState,
-} from 'react';
+import { ArrowForward as ArrowForwardIcon } from '@mui/icons-material';
 import {
   Button,
   Container,
@@ -12,16 +6,18 @@ import {
   PaletteMode,
   Typography,
 } from '@mui/material';
-import {
-  useTheme,
-  ThemeProvider,
-  createTheme,
-} from '@mui/material/styles';
-import { ArrowForward as ArrowForwardIcon } from '@mui/icons-material';
+import { createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
+import React, {
+  createContext,
+  Fragment,
+  useContext,
+  useMemo,
+  useState,
+} from 'react';
 
+import Footer from './components/Footer';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import Footer from './components/Footer';
 
 const rootElement = document.getElementById('root');
 const ColorModeContext = createContext({ toggleColorMode: () => {} });
@@ -42,19 +38,18 @@ const getDesignTokens = (mode: PaletteMode) => ({
   palette: {
     mode,
     primary: {
-      main: '#3c69f6'
+      main: '#3c69f6',
     },
     ...(mode === 'dark'
       ? {
           background: {
-            default: '#171c23'
+            default: '#171c23',
           },
           text: {
             primary: '#fff',
           },
         }
-      : {
-        }),
+      : {}),
   },
   typography: {
     fontFamily: '"Merriweather Sans", sans-serif',
@@ -70,15 +65,20 @@ function App() {
       <Header toggleColorMode={colorMode.toggleColorMode} />
       <Hero />
       <Container maxWidth="lg">
-        <div className="mt-12 flex max-md:flex-col justify-between md:items-center rounded-2xl max-md:p-8 px-10 py-16 bg-[#232a35]">
+        <div className="mt-12 flex justify-between rounded-2xl bg-[#232a35] px-10 py-16 max-md:flex-col max-md:p-8 md:items-center">
           <Typography
-            className="max-md:text-[32px] font-bold tracking-tight text-white"
+            className="font-bold tracking-tight text-white max-md:text-[32px]"
             component="h2"
             variant="h3"
           >
             Find My Pictures
           </Typography>
-          <Button className="max-md:mt-8 max-md:w-full rounded-md md:min-w-[150px] h-12 font-bold normal-case" variant="contained">Go <ArrowForwardIcon className="ml-2" /></Button>
+          <Button
+            className="h-12 rounded-md font-bold normal-case max-md:mt-8 max-md:w-full md:min-w-[150px]"
+            variant="contained"
+          >
+            Go <ArrowForwardIcon className="ml-2" />
+          </Button>
         </div>
       </Container>
       <Footer />
@@ -92,11 +92,11 @@ export default function themeApp() {
     () => ({
       toggleColorMode: () => {
         setMode((prevMode: PaletteMode) =>
-          prevMode === 'light' ? 'dark' : 'light',
+          prevMode === 'light' ? 'dark' : 'light'
         );
       },
     }),
-    [],
+    []
   );
 
   const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
@@ -109,4 +109,4 @@ export default function themeApp() {
       </ThemeProvider>
     </ColorModeContext.Provider>
   );
-};
+}

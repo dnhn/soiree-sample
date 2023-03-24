@@ -1,8 +1,11 @@
+import { StyledEngineProvider } from '@mui/material/styles';
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
-import { StyledEngineProvider } from '@mui/material/styles';
-import './index.scss';
+
 import App from './App';
+
+import './index.scss';
+
 import reportWebVitals from './reportWebVitals';
 
 const rootElement = document.getElementById('root');
@@ -13,7 +16,7 @@ root.render(
     <StyledEngineProvider injectFirst>
       <App />
     </StyledEngineProvider>
-  </StrictMode>,
+  </StrictMode>
 );
 
 reportWebVitals();

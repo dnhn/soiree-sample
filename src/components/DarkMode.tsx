@@ -1,16 +1,15 @@
-import React, { Fragment, useState } from 'react';
-import {
-  Checkbox,
-  FormControlLabel,
-  useTheme,
-} from '@mui/material';
+import { Checkbox, FormControlLabel, useTheme } from '@mui/material';
+import React from 'react';
 
 import css from './DarkMode.module.scss';
 
-export default function DarkMode(
-  { className, toggleColorMode }:
-  { className?: any, toggleColorMode: any }
-) {
+export default function DarkMode({
+  className,
+  toggleColorMode,
+}: {
+  className?: any;
+  toggleColorMode: any;
+}) {
   const theme = useTheme();
   return (
     <FormControlLabel
@@ -20,12 +19,19 @@ export default function DarkMode(
           className="hidden"
           checked={theme.palette.mode === 'dark' ? true : false}
           onChange={toggleColorMode}
-        />}
+        />
+      }
       label={
-        <div className={`${css.ThemeToggle} relative rounded-2xl h-[32px] p-2 bg-[#3c69f6] text-[0px]`}>
-          <span className={`${theme.palette.mode === 'dark' ? css.ThemeToggleDark : ''}`}></span>
+        <div
+          className={`${css.ThemeToggle} relative h-[32px] rounded-2xl bg-[#3c69f6] p-2 text-[0px]`}
+        >
+          <span
+            className={`${
+              theme.palette.mode === 'dark' ? css.ThemeToggleDark : ''
+            }`}
+          ></span>
         </div>
       }
     />
   );
-};
+}
